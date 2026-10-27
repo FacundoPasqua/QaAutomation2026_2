@@ -1,0 +1,72 @@
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": "01TESTPRODUCT00000000000001",
+      "name": "Pinza de prueba",
+      "description": "Producto falso para practicar mocks en Cypress.",
+      "price": 9.99,
+      "is_location_offer": false,
+      "is_rental": false,
+      "co2_rating": "A",
+      "in_stock": true,
+      "is_eco_friendly": true,
+      "product_image": {
+        "id": "01TESTIMAGE00000000000001",
+        "by_name": "Mock",
+        "by_url": "https://example.com",
+        "source_name": "Mock",
+        "source_url": "https://example.com",
+        "file_name": "pliers01.avif",
+        "title": "Pinza de prueba"
+      },
+      "category": {
+        "id": "01M5Z4WVP49VEVGCCBJ43WSABH",
+        "name": "Hand Tools",
+        "slug": "hand-tools",
+        "parent_id": null
+      },
+      "brand": {
+        "id": "01M5Z4WVA5V5VNPC53TWQT05Q9",
+        "name": "ForgeFlex Tools",
+        "slug": "forgeflex-tools"
+      }
+    },
+    {
+      "id": "01TESTPRODUCT00000000000002",
+      "name": "Martillo de prueba",
+      "description": "Producto falso para practicar mocks en Cypress.",
+      "price": 19.5,
+      "is_location_offer": false,
+      "is_rental": false,
+      "co2_rating": "A",
+      "in_stock": true,
+      "is_eco_friendly": true,
+      "product_image": {
+        "id": "01TESTIMAGE00000000000002",
+        "by_name": "Mock",
+        "by_url": "https://example.com",
+        "source_name": "Mock",
+        "source_url": "https://example.com",
+        "file_name": "pliers01.avif",
+        "title": "Martillo de prueba"
+      },
+      "category": {
+        "id": "01M5Z4WVP49VEVGCCBJ43WSABH",
+        "name": "Hand Tools",
+        "slug": "hand-tools",
+        "parent_id": null
+      },
+      "brand": {
+        "id": "01M5Z4WVA5V5VNPC53TWQT05Q9",
+        "name": "ForgeFlex Tools",
+        "slug": "forgeflex-tools"
+      }
+    }
+  ],
+  "from": 1,
+  "last_page": 1,
+  "per_page": 9,
+  "to": 2,
+  "total": 2
+}
