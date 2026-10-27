@@ -188,7 +188,7 @@ describe('Lámina 15 · Autenticación con token', () => {
 // ─────────────────────────────────────────────
 describe('Lámina 16 · cy.intercept(): espiar', () => {
   it('espía el request a /products', () => {
-    cy.intercept('GET', '**/products*').as('productos')
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' }).as('productos')
     cy.visit('https://practicesoftwaretesting.com')
     cy.wait('@productos')
       .its('response.statusCode')
@@ -196,10 +196,10 @@ describe('Lámina 16 · cy.intercept(): espiar', () => {
   })
 
   it('revisa request y response de la tienda', () => {
-    cy.intercept('GET', '**/products*').as('productos')
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' }).as('productos')
     cy.visit('https://practicesoftwaretesting.com')
     cy.wait('@productos').then(({ request, response }) => {
-      expect(request.method).to.eq('GET')
+      expect(request.method).to.match(/GET|QUERY/)
       expect(response.statusCode).to.eq(200)
       expect(response.body.data).to.have.length.greaterThan(0)
     })
@@ -211,7 +211,7 @@ describe('Lámina 16 · cy.intercept(): espiar', () => {
 // ─────────────────────────────────────────────
 describe('Lámina 17 · cy.intercept(): mockear', () => {
   it('muestra los productos del fixture', () => {
-    cy.intercept('GET', '**/products*',
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' },
       { fixture: 'productos.json' }).as('productos')
     cy.visit('https://practicesoftwaretesting.com')
     cy.wait('@productos')
@@ -220,7 +220,7 @@ describe('Lámina 17 · cy.intercept(): mockear', () => {
   })
 
   it('la tienda tolera un error 500', () => {
-    cy.intercept('GET', '**/products*', {
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' }, {
       statusCode: 500,
       body: { message: 'Server Error' },
     }).as('productos')
@@ -231,7 +231,7 @@ describe('Lámina 17 · cy.intercept(): mockear', () => {
   })
 
   it('lista vacía: la tienda no muestra productos', () => {
-    cy.intercept('GET', '**/products*', {
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' }, {
       body: { current_page: 1, data: [], from: null,
         last_page: 1, per_page: 9, to: null, total: 0 },
     }).as('productos')
@@ -243,7 +243,7 @@ describe('Lámina 17 · cy.intercept(): mockear', () => {
   })
 
   it('respuesta lenta (delay de 3 segundos)', () => {
-    cy.intercept('GET', '**/products*',
+    cy.intercept({ method: /GET|QUERY/, url: '**/products*' },
       { fixture: 'productos.json', delay: 3000 }).as('productos')
     cy.visit('https://practicesoftwaretesting.com')
     cy.contains('Pinza de prueba', { timeout: 10000 })
